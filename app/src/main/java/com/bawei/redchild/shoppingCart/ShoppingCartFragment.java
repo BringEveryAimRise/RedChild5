@@ -1,5 +1,6 @@
 package com.bawei.redchild.shoppingCart;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.view.View;
@@ -198,8 +199,9 @@ public class ShoppingCartFragment extends BaseFragment {
         mShopcart_fragment_tv_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), OrderForGoodsActivity.class);
-
+                Intent intent = new Intent(getActivity(), OrderFormActivity.class);
+                intent.putExtra("zongjia",mShopcart_fragment_tv_tatal.getText().toString());
+                startActivity(intent);
             }
         });
 
