@@ -115,6 +115,9 @@
             android:value="5923d7c5f29d9822fa000024">
         </meta-data>
 
+        <activity android:name=".me.me.View.Set_act">
+        </activity>
+
         <activity android:name=".home.home_activity.H_xq_bdu_dwei_Activity">
         </activity>
         <service
@@ -122,6 +125,7 @@
             android:enabled="true"
             android:process=":remote">
         </service>
+
     </application>
 
 </manifest>
