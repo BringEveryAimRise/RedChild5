@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.bawei.redchild.R;
 import com.bawei.redchild.shoppingCart.bean.ChildBean;
 import com.bawei.redchild.shoppingCart.bean.ShopCartBean;
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -124,6 +125,8 @@ public class ShopCartAdapter extends BaseExpandableListAdapter {
         //获取集合里的状态值在单击全选和全不选的时候我们把状态值给存里起来  所以在全选和不全选的时候获取值刷新就行
         final ChildBean childBean = mShopCartBeen.get(groupPosition).getChildList().get(childPosition);
         if (childBean!=null) {
+            //加载图片
+            Glide.with(mContext).load(childBean.getImageUrl()).into(ch.shopcart_fragment_item_chile_im);
             //获取状态值来这是否选中
             ch.shopcart_fragment_item_chile_cb.setChecked(childBean.isChoesed());
             //设置商品的名字

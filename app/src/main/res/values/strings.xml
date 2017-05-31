@@ -2,7 +2,7 @@
     <string name="app_name">红孩儿</string>
     <string name="homesearchbarhint">商品/店铺</string>
 
-
+    <string name="orderform_title">确定订单</string>
     <string name="shop_shop">购物车</string>
     <string name="shop_compile">删除</string>
     <string name="shop_text">测试</string>

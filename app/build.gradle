@@ -64,5 +64,5 @@ dependencies {
     compile files('src/main/jniLibs/Sunflower.jar')
     compile 'com.google.code.gson:gson:2.8.0'
     compile project(':simplezxing')
-
+    compile files('libs/alipaySdk-20160223.jar')
 }
