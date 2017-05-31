@@ -1,20 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/home_btn_search_layout2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ios_public_space_60px"
+        android:layout_weight="1.0"
+        android:background="@drawable/et_search_top_bg">
 
+        <ImageView
+            android:id="@+id/home_search_title_logo"
+            style="@style/h_f1_imgview"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10.0dip"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/icon_search_home" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_classify_left"
-        android:layout_weight="7"
+        <TextView
+            android:id="@+id/text_hint02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5.0dip"
+            android:layout_toRightOf="@id/home_search_title_logo"
+            android:hint="@string/homesearchbarhint"
+            android:singleLine="true"
+
+            android:textColor="@color/add_cart_disabled_text_color"
+            android:textColorHint="@color/color_gray_999999"
+            android:textSize="13.0sp" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@id/home_btn_search_layout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_classify_left"
+            android:layout_weight="7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
 
-    <FrameLayout
-        android:id="@+id/rv_classify_right"
-        android:layout_weight="3"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        <FrameLayout
+            android:id="@+id/rv_classify_right"
+            android:layout_weight="3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></FrameLayout>
 
-</LinearLayout>
+    </LinearLayout>
+    <!--  <android.support.v7.widget.RecyclerView
+          android:id="@+id/rv_classify_left"
+          android:layout_weight="7"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+      </android.support.v7.widget.RecyclerView>
+
+      <FrameLayout
+          android:id="@+id/rv_classify_right"
+          android:layout_weight="3"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"></FrameLayout>-->
+
+</RelativeLayout>

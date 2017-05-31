@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by lichaohui on 2017/5/17.
+ * ------------------------------
  */
 
 public class Re_Classify_Left_Adapter   extends RecyclerView.Adapter<Re_Classify_Left_Adapter.ViewHolder> {

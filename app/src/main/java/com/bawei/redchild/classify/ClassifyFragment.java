@@ -1,5 +1,6 @@
 package com.bawei.redchild.classify;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -19,6 +20,7 @@ import com.bawei.redchild.classify.dao.Classify;
 import com.bawei.redchild.classify.dao.DividerGridItemDecoration;
 import com.bawei.redchild.classify.dao.Url;
 import com.bawei.redchild.classify.fragment.Classify_Right_Fragment;
+import com.bawei.redchild.home.home_activity.HomeActivity_search;
 import com.google.gson.Gson;
 import com.squareup.okhttp.Request;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -67,6 +69,13 @@ public class ClassifyFragment extends BaseFragment {
     protected void initView() {
         initdata();
         mRv_classify_left = (RecyclerView) getView().findViewById(R.id.rv_classify_left);
+        View viewById = getView().findViewById(R.id.home_btn_search_layout2);
+        viewById.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startCaptureActivityForResult();
+            }
+        });
 
         mRv_classify_left.setHasFixedSize(true);
         layoutMgr = new LinearLayoutManager(getActivity());
@@ -123,6 +132,19 @@ public class ClassifyFragment extends BaseFragment {
 
 
 
+    }
+
+    private void startCaptureActivityForResult() {
+        Intent intent = new Intent(getActivity(), HomeActivity_search.class);
+        startActivity(intent);
+      /*  Bundle bundle = new Bundle();
+        bundle.putBoolean(CaptureActivity.KEY_NEED_BEEP, CaptureActivity.VALUE_BEEP);
+        bundle.putBoolean(CaptureActivity.KEY_NEED_VIBRATION, CaptureActivity.VALUE_VIBRATION);
+        bundle.putBoolean(CaptureActivity.KEY_NEED_EXPOSURE, CaptureActivity.VALUE_NO_EXPOSURE);
+        bundle.putByte(CaptureActivity.KEY_FLASHLIGHT_MODE, CaptureActivity.VALUE_FLASHLIGHT_OFF);
+        bundle.putByte(CaptureActivity.KEY_ORIENTATION_MODE, CaptureActivity.VALUE_ORIENTATION_AUTO);
+        intent.putExtra(CaptureActivity.EXTRA_SETTING_BUNDLE, bundle);
+        startActivityForResult(intent, CaptureActivity.REQ_CODE);*/
     }
     public  void  setfragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
