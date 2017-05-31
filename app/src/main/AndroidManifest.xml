@@ -53,6 +53,15 @@
         <activity android:name=".me.me.View.Login_act"/>
         <activity android:name=".baby_info.BabyInfoActivity"/>
         <activity android:name=".me.me.View.Register_act"/>
+
+
+    
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+
         <activity
             android:name="com.umeng.qq.tencent.AuthActivity"
             android:launchMode="singleTask"
@@ -92,6 +101,7 @@
         <activity android:name=".home.home_activity.HomeActivity_search"/>
         <activity android:name=".me.me.View.SetPassWord_act">
         </activity>
+        <activity android:name=".shoppingCart.OrderFormActivity"/>
         <activity android:name=".me.me.View.Success_act">
         </activity>
         <activity android:name=".home.home_activity.SeekActivity"/>

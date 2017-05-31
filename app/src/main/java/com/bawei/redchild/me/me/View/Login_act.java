@@ -71,6 +71,8 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
                 babyInfo.edit().putString("name",name).commit();
                 babyInfo.edit().putString("icon",iconurl).commit();
                 babyInfo.edit().putBoolean("isLogin",true).commit();
+                Intent intent = new Intent(Login_act.this, HomeActivity.class);
+                startActivity(intent);
                 finish();
 
             }
@@ -95,8 +97,6 @@ public class Login_act extends AppCompatActivity implements View.OnClickListener
         tb_login.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login_act.this, HomeActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
