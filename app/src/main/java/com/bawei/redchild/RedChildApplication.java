@@ -1,6 +1,10 @@
 package com.bawei.redchild;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.TextView;
+
+import com.baidu.location.LocationClient;
+import com.bawei.redchild.home.home_activity.H_xq_bdu_dwei_Activity;
 import com.greendao.dao.DaoMaster;
 import com.greendao.dao.DaoSession;
 import com.bawei.redchild.me.me.Utils.Utils;
@@ -14,7 +18,6 @@ import com.umeng.socialize.UMShareAPI;
 *类描述：
 */
 public class RedChildApplication extends Application {
-
     public DaoSession daoSession;
     public SQLiteDatabase db;
     public DaoMaster.DevOpenHelper helper;
@@ -32,6 +35,7 @@ public class RedChildApplication extends Application {
         UMShareAPI.get(this);
         Utils.init(getApplicationContext());
         setupDatabase();
+
     }
     private void setupDatabase() {
         // 通过 DaoMaster 的内部类 DevOpenHelper，你可以得到一个便利的 SQLiteOpenHelper 对象。
@@ -48,7 +52,6 @@ public class RedChildApplication extends Application {
     public DaoSession getDaoSession() {
         return daoSession;
     }
-
 
     public SQLiteDatabase getDb() {
         return db;

@@ -50,7 +50,21 @@
               android:layout_width="wrap_content"
               android:textColor="#ff0000"
               android:layout_height="wrap_content"/>
-
+          <LinearLayout
+              android:id="@+id/linela_xiangqi_baidu"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="50dp">
+              <TextView
+                  android:text="送至"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+              <TextView
+                  android:layout_marginLeft="30dp"
+                  android:text="23:59前下单，预计明天送达"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"/>
+          </LinearLayout>
       </LinearLayout>
   </ScrollView>
     <LinearLayout
@@ -86,7 +100,7 @@ style="@style/xiangqing_imgaview"
             android:background="@drawable/bg_btn_search"
             >
          <Button
-             android:id="@+id/but1_xiangqing_ye1_nbu"
+             android:id="@+id/but1_xiangqing_ye1_nbu_gmai"
              android:layout_width="0dp"
              android:layout_weight="1"
              android:background="#fee600"
@@ -94,7 +108,7 @@ style="@style/xiangqing_imgaview"
              android:textColor="#ffffff"
              android:layout_height="match_parent"/>
             <Button
-                android:id="@+id/but2_xiangqing_ye1_nbu"
+                android:id="@+id/but2_1_xiangqing_ye1_nbu_gwuc"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:background="#ff0000"
