@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@mipmap/xinlanglog"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_alignBottom="@+id/ib_qqlog_login"
         android:layout_toEndOf="@+id/but_register_login"
         android:id="@+id/iv_xllogin_login"/>
@@ -156,7 +156,7 @@
         android:background="@mipmap/qqlog"
         android:id="@+id/ib_qqlog_login"
         android:layout_marginBottom="14dp"
-        android:layout_marginStart="17dp"
+        android:layout_marginStart="20dp"
         android:layout_above="@+id/tv_qqlogin_login"
         android:layout_toEndOf="@+id/textView"/>
 

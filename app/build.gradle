@@ -64,5 +64,6 @@ dependencies {
     compile files('src/main/jniLibs/Sunflower.jar')
     compile 'com.google.code.gson:gson:2.8.0'
     compile project(':simplezxing')
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 
 }
