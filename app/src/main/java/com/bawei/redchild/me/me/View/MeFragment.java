@@ -7,15 +7,19 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bawei.redchild.R;
 import com.bawei.redchild.base.BaseFragment;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.SimpleTarget;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -29,7 +33,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class MeFragment extends BaseFragment implements View.OnClickListener{
 
-    private ImageView mHeadicon;
+    private CircleImageView mHeadicon;
     private TextView mName,mset;
     private SharedPreferences babyInfo;
     private Bitmap mBimap;
@@ -53,13 +57,21 @@ public class MeFragment extends BaseFragment implements View.OnClickListener{
     protected void initView() {
         mset= (TextView) getView().findViewById(R.id.tv_set_success);
         mset.setOnClickListener(this);
-        mHeadicon = (ImageView) getView().findViewById(R.id.iv_head_success);
+        mHeadicon = (CircleImageView) getView().findViewById(R.id.iv_head_success);
         mHeadicon.setOnClickListener(this);
         mName = (TextView) getView().findViewById(R.id.tv_name_success);
         babyInfo = getActivity().getSharedPreferences("babyInfo", MODE_PRIVATE);
         mName1 = babyInfo.getString("name", "aa");
         mIconurl = babyInfo.getString("icon", "");
-        Glide.with(getActivity()).load(mIconurl).bitmapTransform(new CropCircleTransformation(getActivity())).placeholder(R.mipmap.courier_default_icon).into(mHeadicon);
+        if (!TextUtils.isEmpty(mIconurl)){
+            Glide.with(getActivity()).load(mIconurl).bitmapTransform(new CropCircleTransformation(getActivity())).placeholder(R.mipmap.courier_default_icon) .into(new SimpleTarget<GlideDrawable>() {
+                @Override
+                public void onResourceReady(GlideDrawable resource,
+                                            GlideAnimation<? super GlideDrawable> glideAnimation) {
+                    mHeadicon.setImageDrawable(resource);
+                }
+            });
+        }
         mName.setText(mName1);
     }
 
