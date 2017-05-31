@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_set_act"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bawei.redchild.me.me.View.Set_act">
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tb_set"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:padding="5dp"/>
+    </android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_set"
+        android:layout_below="@id/tb_set"
+        ></android.support.v7.widget.RecyclerView>
+   <Button
+    android:text="退出登录"
+    android:layout_width="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/but_exit_set"
+    android:textColor="@color/white"
+    android:background="@drawable/shape_loginbut"
+    android:layout_below="@id/rv_set"
+    android:layout_marginTop="10dp"
+    />
+
+</RelativeLayout>

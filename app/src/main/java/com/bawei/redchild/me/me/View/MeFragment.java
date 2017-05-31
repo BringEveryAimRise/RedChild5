@@ -4,13 +4,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
+import android.util.Base64;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bawei.redchild.R;
 import com.bawei.redchild.base.BaseFragment;
@@ -18,6 +19,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+
+import java.io.ByteArrayOutputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -39,6 +42,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener{
     private Bitmap mBimap;
     private String mName1;
     private String mIconurl;
+    private String mPicture;
 
     /**
      * 绑定布局文件
@@ -63,7 +67,12 @@ public class MeFragment extends BaseFragment implements View.OnClickListener{
         babyInfo = getActivity().getSharedPreferences("babyInfo", MODE_PRIVATE);
         mName1 = babyInfo.getString("name", "aa");
         mIconurl = babyInfo.getString("icon", "");
-        if (!TextUtils.isEmpty(mIconurl)){
+        mPicture = babyInfo.getString("picture", "");
+        mName.setText(mName1);
+        if (!TextUtils.isEmpty(mPicture)){
+            mHeadicon.setImageBitmap(convertStringToIcon(mPicture));
+            return;
+        } else if (!TextUtils.isEmpty(mIconurl)){
             Glide.with(getActivity()).load(mIconurl).bitmapTransform(new CropCircleTransformation(getActivity())).placeholder(R.mipmap.courier_default_icon) .into(new SimpleTarget<GlideDrawable>() {
                 @Override
                 public void onResourceReady(GlideDrawable resource,
@@ -72,16 +81,15 @@ public class MeFragment extends BaseFragment implements View.OnClickListener{
                 }
             });
         }
-        mName.setText(mName1);
+
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tv_set_success:
-                babyInfo.edit().clear().commit();
-                Toast.makeText(getActivity(), "清除SharedP 缓存", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(), Login_act.class);
+                Intent intent = new Intent(getActivity(), Set_act.class);
                 startActivity(intent);
                 break;
             case R.id.iv_head_success:
@@ -123,18 +131,17 @@ public class MeFragment extends BaseFragment implements View.OnClickListener{
         if (requestCode == 200) {
             //得到像册中图片的地址
             Uri uri = data.getData();
-//设置图片
-//       img.setImageURI(uri);
 //简单编辑
             crop(uri);
         }else if (requestCode == 9999) {
             //得到裁剪后的照片
             mBimap = data.getParcelableExtra("data");
+            babyInfo.edit().putString("picture",convertIconToString(mBimap)).commit();
             mHeadicon.setImageBitmap(mBimap);
         }else if (requestCode == 100) {
             //得到照片
             mBimap = data.getParcelableExtra("data");
-
+            babyInfo.edit().putString("picture",convertIconToString(mBimap)).commit();
             mHeadicon.setImageBitmap(mBimap);
 
             super.onActivityResult(requestCode, resultCode, data);
@@ -173,5 +180,38 @@ public class MeFragment extends BaseFragment implements View.OnClickListener{
         intent.putExtra("return-data", true);
         startActivityForResult(intent, 9999);
     }
+
+    /**
+     * 图片转成string
+     */
+    public static String convertIconToString(Bitmap bitmap)
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();// outputstream
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] appicon = baos.toByteArray();// 转为byte数组
+        return Base64.encodeToString(appicon, Base64.DEFAULT);
+    }
+
+    //将字符串转为bitmap
+    public static Bitmap convertStringToIcon(String st)
+    {
+        // OutputStream out;
+        Bitmap bitmap = null;
+        try
+        {
+            // out = new FileOutputStream("/sdcard/aa.jpg");
+            byte[] bitmapArray;
+            bitmapArray = Base64.decode(st, Base64.DEFAULT);
+            bitmap =
+                    BitmapFactory.decodeByteArray(bitmapArray, 0,
+                            bitmapArray.length);
+            return bitmap;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+    }
+
 
 }
